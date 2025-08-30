@@ -350,6 +350,7 @@
 -analyzer:"/home/thelastbobreek/Unity/Hub/Editor/2022.3.62f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/Scripts/Button.cs"
 "Assets/Scripts/Counter.cs"
+"Assets/Scripts/CounterView.cs"
 -langversion:9.0
 /deterministic
 /optimize+

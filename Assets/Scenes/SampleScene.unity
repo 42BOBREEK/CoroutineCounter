@@ -388,6 +388,7 @@ GameObject:
   - component: {fileID: 1379751133}
   - component: {fileID: 1379751132}
   - component: {fileID: 1379751131}
+  - component: {fileID: 1379751134}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -429,7 +430,7 @@ MonoBehaviour:
   _timeToAddNumber: 0.5
   _countedNumber: 0
   _button: {fileID: 1679793333}
-  _text: {fileID: 1379751132}
+  _buttonWasClicked: 0
 --- !u!114 &1379751132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -527,6 +528,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1379751129}
   m_CullTransparentMesh: 1
+--- !u!114 &1379751134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379751129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ec0a4411af2cfad0931f658572256c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text: {fileID: 1379751132}
+  _counter: {fileID: 1379751131}
 --- !u!1 &1679793331
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,7 +593,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 923a62ce3adc2cbb69362fe135e6a596, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _wasClicked: 0
 --- !u!114 &1679793334
 MonoBehaviour:
   m_ObjectHideFlags: 0

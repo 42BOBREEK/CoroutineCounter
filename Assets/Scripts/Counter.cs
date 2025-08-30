@@ -1,26 +1,37 @@
 using System.Collections;
 using UnityEngine;
-using TMPro;
+using System;
 
 public class Counter : MonoBehaviour
 {
     [SerializeField] private float _timeToAddNumber = 0.5f;
     [SerializeField] private int _countedNumber = 0;
     [SerializeField] private Button _button;
-    [SerializeField] private TextMeshProUGUI _text;
+    [SerializeField] private bool _buttonWasClicked;
 
     private float _timeLeft; 
     private Coroutine _coroutine;
 
+    public event Action NumberChanged;
+    public int CountedNumber => _countedNumber;
+
     private void Start()
     {
-        _text.text = "";
        _timeLeft = _timeToAddNumber; 
     }
 
-    private void StartCounting()
+    private void ButtonClicked()
     {
-       _coroutine = StartCoroutine(Count());
+        if(_buttonWasClicked == false)
+        {
+            _coroutine = StartCoroutine(Count());
+        }
+        else 
+        {
+            StopCoroutine(_coroutine);
+        }
+        
+        _buttonWasClicked = !_buttonWasClicked;
     }
 
     private void StopCounting()
@@ -30,31 +41,24 @@ public class Counter : MonoBehaviour
 
     private void OnEnable()
     {
-       _button.Clicked += StartCounting;
-       _button.ClickedTwice += StopCounting;
+       _button.Clicked += ButtonClicked;
     }
 
     private void OnDisable()
     {
-       _button.Clicked -= StartCounting; 
-       _button.ClickedTwice -= StopCounting; 
+       _button.Clicked -= ButtonClicked; 
     }
 
     private IEnumerator Count()
     {
         var wait = new WaitForSeconds(_timeToAddNumber);
 
-        while(true)
+        while(enabled)
         {
-            _countedNumber += 1;
-            ShowCountdown();
+            _countedNumber++;
+            NumberChanged?.Invoke();
 
             yield return wait; 
         }
-    }
-
-    private void ShowCountdown()
-    {
-        _text.text = _countedNumber.ToString("");
     }
 }
